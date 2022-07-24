@@ -26,13 +26,13 @@ const getLastMessageBetweenUsers = (req, res) => {
   );
 };
 const sendMessageToUser = (req, res) => {
-  const { sender, reciever, content } = req.body;
+  const { sender, reciever, content, MessageId } = req.body;
   console.log(req.body);
-  const id = Math.floor(Math.random() * 10000);
-  console.log(id);
+
+  //console.log(id);
   connection.query(
     "Insert Into Messages (Sender,Reciever,Content,Seen,MessageId)values (?,?,?,0,?)",
-    [sender, reciever, content, id],
+    [sender, reciever, content, MessageId],
     async function (error, results) {
       if (error) {
         throw error;

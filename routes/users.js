@@ -17,7 +17,7 @@ const { route } = require("../server");
 const router = express.Router();
 
 router.route("/").get(getUsers);
-router.route("/:id").get(getUser);
+router.route("/:email").get(getUser);
 router.route("/searchUser/:search").get(searchUsers);
 router.route("/getContacts/:email").get(getContacts);
 router.route("/add").post(addUser);

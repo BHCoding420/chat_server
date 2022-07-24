@@ -15,7 +15,7 @@ app.use(express.json());
 
 const usersRouter = require("./routes/users");
 const messagesRouter = require("./routes/messages");
-
+const chatsRouter = require("./routes/chats");
 // default route
 app.get("/", function (req, res) {
   return res.send({ error: true, message: "hello" });
@@ -27,7 +27,7 @@ var connection = require("./db");
 
 app.use("/users", usersRouter);
 app.use("/messages", messagesRouter);
-
+app.use("/chats", chatsRouter);
 // set port
 app.listen(5000, function () {
   console.log("Node app is running on port 5000");

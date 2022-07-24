@@ -113,10 +113,10 @@ const getUsers = async (req, res) => {
 };
 
 const getUser = async (req, res) => {
-  const { id } = req.params;
+  const { email } = req.params;
   connection.query(
-    "SELECT * FROM Users where id = ?",
-    [id],
+    "SELECT * FROM Users where Email = ?",
+    [email],
     function (error, results) {
       if (error) throw error;
       return res.send({ data: results });

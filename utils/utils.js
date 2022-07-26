@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 const generateToken = (user) => {
   return jwt.sign({ user }, "197291298179", {
-    expiresIn: "2d",
+    expiresIn: "3d",
   });
 };
 

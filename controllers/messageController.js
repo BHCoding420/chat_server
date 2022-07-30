@@ -25,6 +25,19 @@ const getLastMessageBetweenUsers = (req, res) => {
     }
   );
 };
+
+const updateRead = (req, res) => {
+  const { sender, reciever } = req.params;
+  //console.log(req.r);
+  connection.query(
+    "Update Messages set Seen = 1 where Sender = ? and Reciever = ?",
+    [sender, reciever],
+    async function (error, results) {
+      //console.log(results);
+      res.send(results);
+    }
+  );
+};
 const sendMessageToUser = (req, res) => {
   const { sender, reciever, content, MessageId } = req.body;
   console.log(req.body);
@@ -46,4 +59,5 @@ module.exports = {
   getMessagesBetweenUsers,
   sendMessageToUser,
   getLastMessageBetweenUsers,
+  updateRead,
 };

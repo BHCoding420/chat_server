@@ -65,17 +65,17 @@ const getChats = (req, res) => {
   const { currentUser } = req.params;
 
   connection.query(
-    `Select Chatter1 as Email,FirstName,LastName,LastSentMessage,Date from Chats join Messages join Users on
+    `Select Chatter1 as Email,FirstName,LastName,LastSentMessage,Date,Content from Chats join Messages join Users on
     Chats.LastSentMessage = Messages.MessageId
     and Chats.Chatter1 = Users.Email
     where Chatter2="${currentUser}"
     UNION
-    Select Chatter2 as Email,FirstName,LastName,LastSentMessage,Date from Chats join Messages join Users on
+    Select Chatter2 as Email,FirstName,LastName,LastSentMessage,Date,Content from Chats join Messages join Users on
     Chats.LastSentMessage = Messages.MessageId
     and Chats.Chatter2 = Users.Email
     where Chatter1="${currentUser}"
     UNION
-    Select Chatter2 as Email,FirstName,LastName,LastSentMessage,Date from Chats join Messages join Users on
+    Select Chatter2 as Email,FirstName,LastName,LastSentMessage,Date,Content from Chats join Messages join Users on
     Chats.LastSentMessage = Messages.MessageId
     and Chats.Chatter2 = Users.Email
     where Chatter1="${currentUser}" and Chatter2="${currentUser}"

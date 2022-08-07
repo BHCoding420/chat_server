@@ -117,7 +117,7 @@ io.on("connection", (socket) => {
   });
 });
 // set port
-server.listen(5000, function () {
+server.listen(process.env.PORT || 5000, function () {
   console.log("Node app is running on port 5000");
 });
 module.exports = app;
